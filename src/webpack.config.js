@@ -9,14 +9,23 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name].js',
+    chunkFilename: '[id].chunk.js',
   },
+  // output: {
+  //   publicPath: "/modules/",
+  //   path: path.join(__dirname, "../dist-dev/modules"),
+  //   filename: "[name].js",
+  //   chunkFilename: "[id].chunk.js",
+  // },
   module: {
     loaders: [
       {
         test: /\.ts$/,
         loaders: [
-          "awesome-typescript-loader"
+          "@angularclass/hmr-loader",
+          "awesome-typescript-loader",
+          "angular2-load-children",
         ]
       }
     ]

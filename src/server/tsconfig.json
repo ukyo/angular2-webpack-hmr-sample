@@ -4,7 +4,9 @@
     "target": "es2015",
     "noImplicitAny": true,
     "sourceMap": false,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules"

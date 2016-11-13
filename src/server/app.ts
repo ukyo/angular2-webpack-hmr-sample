@@ -20,7 +20,7 @@ const renderer = require("ect")({
 const compiler = webpack(require("../webpack.config"));
 
 app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true, publicPath: "/"
+  noInfo: false, publicPath: "/"
 }));
 
 app.use(require("webpack-hot-middleware")(compiler, {
