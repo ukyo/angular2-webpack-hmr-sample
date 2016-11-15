@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   entry: [
@@ -12,12 +13,6 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
   },
-  // output: {
-  //   publicPath: "/modules/",
-  //   path: path.join(__dirname, "../dist-dev/modules"),
-  //   filename: "[name].js",
-  //   chunkFilename: "[id].chunk.js",
-  // },
   module: {
     loaders: [
       {
@@ -25,15 +20,36 @@ module.exports = {
         loaders: [
           "@angularclass/hmr-loader",
           "awesome-typescript-loader",
-          "angular2-load-children",
+          "angular2-load-children-loader",
+          "angular2-template-loader",
         ]
-      }
+      },
+      {
+        test: /\.css$/, 
+        loaders: [
+          'raw-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return [
+                  require("postcss-smart-import")(),
+                  require("postcss-cssnext")(),
+                  require("autoprefixer")(),
+                ];
+              }
+            }
+          }
+        ]
+      },
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new TsConfigPathsPlugin(),
+    new webpack.ProgressPlugin(),
   ],
   resolve: {
-    extensions: ['', '.ts', '.js', '.json']
+    extensions: ['*', '.ts', '.js', '.json']
   }
 }

@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 const routings = [
   {
     path: "",
-    loadChildren: "es6-promise!../home/home.module#HomeModule",
+    loadChildren: "es6-promise-loader!../home/home.module#HomeModule",
   },
   {
     path: "about",
-    loadChildren: "es6-promise!../about/about.module#AboutModule",
+    loadChildren: "es6-promise-loader!../about/about.module#AboutModule",
   }
 ];
 

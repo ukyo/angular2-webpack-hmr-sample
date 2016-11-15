@@ -1,0 +1,6 @@
+@import "../base.css";
+
+:host {
+  color: var(--color-main);
+  font-size: 12px;
+}

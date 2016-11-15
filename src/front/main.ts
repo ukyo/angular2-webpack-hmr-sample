@@ -22,7 +22,6 @@ const hmrMethods = {
       let restoreInputValues = store.restoreInputValues;
       setTimeout(restoreInputValues);
     }
-
     this.appRef.tick();
     delete store.restoreInputValues;
   },
